@@ -15,7 +15,7 @@
 @min-movil:    		 ~"only screen and (max-width: 320px)";
 
 //Path
-@imgPath:  "/img";
+@imgPath:  "/wp-content/themes/asociacionOrtos/img";
 
 //Layout
 @mx-width: 			960px;
@@ -36,6 +36,7 @@
 //Backgrounds
 @mainPattern: 		#FFFFFF url("@{imgPath}/pattern.jpg") repeat left top;
 @concretePattern: 	#FFFFFF url("@{imgPath}/concrete.jpg") repeat center center;
+@bnPattern: 		#FFFFFF url("@{imgPath}/bnbg.jpg") no-repeat center center;
 
 
 //Absolute Position Center
@@ -100,7 +101,7 @@ body{
 		font-weight: 300;
 	}
 	p{
-		font-size: 1.6rem;
+		font-size: 12px;
 	}
 	a{
 		text-decoration: none;
@@ -194,9 +195,14 @@ body{
 					display: inline-block;
 					padding: 10px 17px;
 					transition: all 1s ease;
+					text-transform: uppercase;
 
-					&.active{
+					&.current_page_item{
 						border-bottom: solid 2px @white;		
+					}
+
+					a{
+						text-transform: uppercase;
 					}
 				}
 			}
@@ -211,11 +217,10 @@ body{
 		}
 	}
 
-	&.home{
+	#home{
 		.slider{
 			.container{
 				height: 540px;
-				background: red;
 				display: block;
 				width: 100%;	
 			}
@@ -263,10 +268,19 @@ body{
 
 						&.red{
 							color: @secondaryColor;
+
+							a{
+								color: @secondaryColor;
+							}
 						}
 
 						&.green{
 							background: @mainColor;
+							color: @white;
+
+							a{
+								color: @white;
+							}
 						}
 
 						span{
@@ -597,4 +611,93 @@ body{
 		}
 		
 	}
+}
+
+body.blog{
+	background: @bnPattern;
+	background-size: 100%;
+
+	.top-blank{
+		height: 35px;
+		display: block;
+		margin: 30px 0 20px 0;
+		background: @white;
+		border-radius: 5px;
+		background: @mainPattern;
+	}
+
+	.blog-body{
+		width: 67%;
+		display: inline-block;
+		float: left;
+		vertical-align: top;
+		border-radius: 5px;
+		background: @white;
+		margin: 0 3% 3% 0;
+
+		.wrapcont{
+			padding: 30px;
+			box-sizing: border-box;
+
+			.post{
+				h1{
+					font-size: 35px;
+				}
+				article{
+					h2{
+						font-size: 14px;
+						font-weight: bold;
+					}
+					.author,
+					.date{
+						font-size: 12px;
+						display: inline-block;
+
+						span{
+							font-weight: bold;
+							color: @secondaryColor;
+						}
+					}
+					.author{
+						margin-right: 5px;
+					}
+					.date{
+
+					}
+					.content{
+						font-size: 12px;
+					}
+				}
+			}
+		}
+	}
+	#sidebar{
+		width: 30%;
+		display: inline-block;
+		border-radius: 5px;
+		background: @white;
+		padding: 30px;
+		box-sizing: border-box;
+		background: @mainPattern;
+		overflow: hidden;
+
+		h5{
+			font-size: 14px;
+			font-weight: bold;
+		}
+
+		.categories{
+			padding: 0;
+			list-style-position: inside;
+			list-style: initial;	
+		}
+	}
+	footer{
+		padding-top: 0;
+
+		.top{
+			display: none;
+		}
+	}
+
 }
