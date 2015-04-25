@@ -1,0 +1,1 @@
+î≈;U<?php exit; ?>a:1:{s:7:"content";s:114:"Especialista en Ort√≥ptica y Terapia Visual FUAA. Magister en Administraci√≥n de Empresas Universidad de La Salle.";}

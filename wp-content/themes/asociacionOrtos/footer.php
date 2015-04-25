@@ -2,46 +2,34 @@
 		<section class="top">
 			<section class="wrapcont">
 				<div class="contact">
-					<h3>Participe</h3>
-					<p>Si usted es Optómetra, Oftalmólogo, Terapista Ocupacional y del Lenguaje, Neurólogo, Psicólogo, Pediatra, pertenece a una Universidad o Laboratorio, y está interesado en participar y apoyar la Ortóptica en Colombia, lo invitamos a que se comunique con hoy con nosotros.</p>
-
+					<?php if ( is_active_sidebar( 'pie-pagina' ) ) : ?>
+						<?php dynamic_sidebar( 'pie-pagina' ); ?>
+					<?php endif; ?>
 					<div class="info">
 						<div class="phone">
-							<h4>Contáctenos</h4>
-							<p><strong>Teléfono:</strong> +57(1) 235 83 05</p>
-							<p><strong>Móvil:</strong> +57 312 345 6785</p>
-							<p><strong>Telefax:</strong> +57(1) 235 83 05</p>
-							<p><strong>Correo:</strong> info@asociacionortos.com</p>
+							<?php if ( is_active_sidebar( 'contactenos' ) ) : ?>
+								<?php dynamic_sidebar( 'contactenos' ); ?>
+							<?php endif; ?>
 						</div>
 						<div class="address">
-							<h4>Dirección</h4>
-							<p>
-								Calle 65 # 10 - 43 <br>
-								Consultorio 104 <br>
-								Bogotá D.C. <br>
-								Colombia
-							</p>
+							<div class="phone">
+							<?php if ( is_active_sidebar( 'direccion' ) ) : ?>
+								<?php dynamic_sidebar( 'direccion' ); ?>
+							<?php endif; ?>
+						</div>
 						</div>
 					</div>
 				</div>
 				<div class="map">
 					<div class="sitemap">
 						<ul>
-							<li><strong>INICIO</strong></li>
-							<li>Noticias</li>
-							<li>Artículos</li>
-							<li>Videos</li>
+							<?php wp_nav_menu( array('menu' => 'Pie de página 1' )); ?>
 						</ul>
 						<ul>
-							<li><strong>ORTOS</strong></li>
-							<li>Asociación</li>
-							<li>Historia</li>
-							<li>Asociados</li>
+							<?php wp_nav_menu( array('menu' => 'Pie de página 2' )); ?>
 						</ul>
 						<ul>
-							<li><strong>EVENTOS</strong></li>
-							<li>Seminarios</li>
-							<li>Conferencias</li>
+							<?php wp_nav_menu( array('menu' => 'Pie de página 3' )); ?>
 						</ul>
 					</div>
 					<div class="googlemaps">
@@ -57,12 +45,15 @@
 					<a class="skype" href=""><img src="<?php bloginfo('template_url'); ?>/img/skypeFooter.png" alt=""></a>
 				</div>
 				<div class="copyright">
-					<strong>Asociación Optométrica Colombiana de Terapia Visual, Ortóptica y Pleóptica <br>
-					<?php echo date('Y'); ?> © Todos los derechos reservado</strong>
+					<strong><?php bloginfo( 'name' ); ?> <br>
+					<?php echo date('Y'); ?> © Todos los derechos reservados</strong>
 				</div>
 			</section>
 		</section>
 	</footer>
 	<?php wp_footer(); ?>
+	<script src="<?php bloginfo('template_directory'); ?>/js/jquery.min.js"></script>
+	<script src="<?php bloginfo('template_directory'); ?>/js/owl.carousel.min.js"></script>
+	<script src="<?php bloginfo('template_directory'); ?>/js/scripts.js"></script>
 </body>
 </html>

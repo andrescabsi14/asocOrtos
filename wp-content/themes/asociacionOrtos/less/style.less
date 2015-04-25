@@ -15,7 +15,7 @@
 @min-movil:    		 ~"only screen and (max-width: 320px)";
 
 //Path
-@imgPath:  "/wp-content/themes/asociacionOrtos/img";
+@imgPath:  "../img";
 
 //Layout
 @mx-width: 			960px;
@@ -32,12 +32,21 @@
 
 @btnBg: 			#932112;
 @ctaBg: 			#2D9042;
+@ctaDarkProfile: 	#242121;
+@ctaDarkRed: 		#932112;
+@redLine: 			#EC6654;
+@lightWhite: 		#fefefe;
+
+@dashedBorder: 		#D8D8D8;
 
 //Backgrounds
 @mainPattern: 		#FFFFFF url("@{imgPath}/pattern.jpg") repeat left top;
 @concretePattern: 	#FFFFFF url("@{imgPath}/concrete.jpg") repeat center center;
-@bnPattern: 		#FFFFFF url("@{imgPath}/bnbg.jpg") no-repeat center center;
-
+@bnPattern: 		#FFFFFF url("@{imgPath}/bnbg.jpg") repeat center center;
+@bnHistory: 		#FFFFFF url("@{imgPath}/history.jpg") no-repeat center center;
+@bnTeam: 			#FFFFFF url("@{imgPath}/darken.jpg") repeat center center;
+@bnEye: 			#000000 url("@{imgPath}/eye.jpg") repeat center center;
+@bnProfile: 		#000000 url("@{imgPath}/bgPerfil.jpg") no-repeat center center;
 
 //Absolute Position Center
 .absoluteCenter{
@@ -58,6 +67,9 @@
 	padding: 0 30px;
 	box-sizing: border-box;
 }
+.hidden{
+	display: none;
+}
 
 html{
   height: 100%;
@@ -70,6 +82,7 @@ body{
 	-webkit-font-smoothing: antialiased;
 	color: @textColor;
 	background: @concretePattern;
+	min-width: @mx-width;
 
 	h1, h2, h3, h4, h5, h6{
 		margin: 0;
@@ -151,31 +164,35 @@ body{
 
 	.btn{
 		font-size: 11px !important;
-		font-weight: bold;
-		background: @btnBg;
-		transition: all 0.5s ease;
-		color: @white;
+		font-weight: bold !important;
+		background: @btnBg !important;
+		transition: all 0.5s ease !important;
+		color: @white !important;
 		padding: 11px 25.5px !important;
-		border-radius: 3px;
-		text-transform: uppercase;
-		border: 0;
+		border-radius: 3px !important;
+		text-transform: uppercase !important;
+		border: 0 !important;
 		display: inline-block !important;
-		cursor: pointer;
-		min-width: 30px;
-		text-align: center;
+		cursor: pointer !important;
+		min-width: 30px !important;
+		text-align: center !important;
 
 		&:hover{
-			background: @secondaryColor;
+			background: @secondaryColor !important;
 			color: @white !important;
 		}
 	}
 
 	header{
 		height: 110px;
-		background: @mainColor;
+		background: fade(@mainColor, 94%);
 		box-shadow: 0px 4px 13px fade(@black, 48%);
-		z-index: 100000000;
+		z-index: 10000;
 		position: relative;
+
+		.container{
+			position: relative;
+		}
 
 		nav{
 			display: inline-block;
@@ -215,14 +232,177 @@ body{
   			overflow: hidden;
   			box-shadow: 3px 3px 6px fade(@black, 50%);
 		}
+		.search{
+			position: absolute;
+			right: 20px;
+			top: 20px;
+
+			form{
+				label{
+					float: left;
+					> span{
+						display: none;
+					}
+					input.search-field{
+						border-radius: 0;
+						border: 0;
+						padding: 5px 6px !important;
+						width: 200px !important;
+						margin-bottom: 0 !important;
+						background: @white;
+					}
+				}
+				input.search-submit{
+					border-radius: 0;
+					border: 0;
+					width: 30px !important;
+					height: 27px !important;
+					text-indent: -9999px;
+					float: left;
+					background: @white url('@{imgPath}/lupa.png') no-repeat;
+					background-size: 60%;
+					background-position: 6px center;
+					cursor: pointer;
+				}
+			}
+		}
 	}
 
 	#home{
 		.slider{
-			.container{
-				height: 540px;
+			#slider{
 				display: block;
-				width: 100%;	
+				width: 100%;
+				position: relative;
+				max-width: @mx-width-content;
+				padding: 30px 50px 0px;
+				padding-bottom: 50px;
+				box-sizing: border-box;
+				margin: 40px 0 0px;
+
+				.nav{
+					position: absolute;
+					width: 40px;
+					height: 40px;
+					background: yellow;
+					top: 43%;
+					opacity: 0.4;
+					transition: all 0.5s ease;
+
+					&:hover{
+						opacity: 1;
+					}
+
+					&.left{
+						left: 0;
+						background: url('@{imgPath}/prev.png') no-repeat;
+						background-size: 100%;
+					}
+					&.right{
+						right: 0;
+						background: url('@{imgPath}/next.png') no-repeat;
+						background-size: 100%;
+					}
+				}
+				.owl-controls{
+					margin: 25px 0;
+
+					.owl-pagination{
+						text-align: center;
+						.owl-page{
+							border: solid 1px #999999;
+							width: 60px;
+							height: 8px;
+							margin: 0px;
+							background-color: #C4C4C4;
+							left: 70px;
+							display: inline-block;
+							opacity: 0.4;
+							transition: all 0.5s ease;
+							margin-left: 5px;
+							background: @white;
+
+							&.active{
+								border: solid 1px #fefefe;
+								opacity: 1;
+								background: @secondaryColor;
+							}
+							&:hover{
+								opacity: 1;
+							}
+						}
+					}
+				}
+
+				.item{
+					display: block;
+					float: left;
+
+					.container{
+						display: block;
+						float: left;
+						height: 280px;
+
+						.img{
+							margin-right: 5%;
+							float: left;
+							width: 40%;
+							height: 100%;
+							overflow: hidden;
+
+							img{
+								height: 100%;
+								width: auto;
+							}
+						}
+						.content{
+							width: 55%;
+							display: inline-block;
+							box-sizing: border-box;
+							padding: 7% 0;
+
+
+							> h3{
+								font-size: 30px;
+								line-height: 36px;
+								padding-bottom: 5px;
+								margin-bottom: 0;
+								font-weight: bold;
+							}
+							> h2{
+								font-size: 30px;
+								line-height: 32px;
+								padding-bottom: 3px;
+								font-weight: bold;
+								margin: 0;
+								padding-bottom: 5px;
+							}
+							.description{
+								font-size: 20px;
+								line-height: 24px;
+
+								p{
+									font-size: 20px;
+									line-height: 24px;
+									margin: 0;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.social{
+			width: 100%;
+			display: block;
+			margin-bottom: 10px;
+
+			a{
+				opacity: 0.7;
+
+				&:hover{
+					opacity: 1;
+				}
 			}
 		}
 		.blog-type{
@@ -430,13 +610,14 @@ body{
 				position: relative;
 				display: block;
 				margin-bottom: 60px;
+				float: left;
 
 				.info{
 					display: inline-block;
 					float: left;
 					width: 50%;
 					box-sizing: border-box;
-					padding: 40px 40px 0 0;
+					padding: 0px 40px 40px 0;
 
 					h3{
 						font-size: 30px;
@@ -502,7 +683,8 @@ body{
 					font-weight: 800;
 					margin-bottom: 20px;
 				}
-				p{
+				p,
+				.textwidget{
 					font-size: 14px;
 					font-weight: normal;
 					margin-bottom: 65px;
@@ -521,19 +703,24 @@ body{
 						margin: 0 0 5px 0;
 					}
 
-					.phone,
+					> .phone,
 					.address{
 						float: left;
 						display: inline-block;
 					}
 
-					.phone{
+					> .phone{
 						width: 60%;
 						padding-right: 25px;
 						box-sizing: border-box;
 					}
 					.address{
 						width: 40%;
+
+						.phone{
+							padding-right: 20px;
+							box-sizing: border-box;
+						}
 					}
 				}
 			}
@@ -559,10 +746,13 @@ body{
 						li{
 							font-size: 14px;
 							text-align: left;
+							margin-bottom: 5px;
 
 							&:first-child{
 								font-size: 15px;
 								margin-bottom: 20px;
+								font-weight: bold;
+								text-transform: uppercase;
 							}
 						}
 					}
@@ -613,9 +803,16 @@ body{
 	}
 }
 
-body.blog{
+body.blog,
+body.single-post,
+body.category,
+body.search{
 	background: @bnPattern;
-	background-size: 100%;
+	background-size: initial;
+
+	> .wrapcont{
+		margin-bottom: 40px;
+	}
 
 	.top-blank{
 		height: 35px;
@@ -624,6 +821,31 @@ body.blog{
 		background: @white;
 		border-radius: 5px;
 		background: @mainPattern;
+		padding: 12px 0 10px 15px;
+		box-sizing: border-box;
+		font-size: 11px;
+		text-transform: uppercase;
+		font-weight: bold;
+
+		a{
+			margin: 0 5px;
+
+			&:hover{
+				color: @secondaryColor;
+			}
+
+			&:first-child{
+				margin: 0 5px 0 0;
+			}
+
+			&:last-child{
+				font-weight: normal;
+
+				&:hover{
+					color: @textColor;
+				}
+			}
+		}
 	}
 
 	.blog-body{
@@ -640,13 +862,18 @@ body.blog{
 			box-sizing: border-box;
 
 			.post{
+				overflow: hidden;
 				h1{
 					font-size: 35px;
 				}
 				article{
+					margin: 25px 0;
+					border-bottom: solid 1px @secondaryColor;
+
 					h2{
-						font-size: 14px;
+						font-size: 20px;
 						font-weight: bold;
+						margin-bottom: 5px;
 					}
 					.author,
 					.date{
@@ -661,11 +888,18 @@ body.blog{
 					.author{
 						margin-right: 5px;
 					}
-					.date{
-
+					.thumbnail{
+						width: 100%;
+						max-height: 350px;
+						overflow: hidden;
+						margin: 20px 0;
 					}
 					.content{
 						font-size: 12px;
+					}
+					.more-link{
+						color: @secondaryColor;
+						font-weight: bold;
 					}
 				}
 			}
@@ -676,7 +910,7 @@ body.blog{
 		display: inline-block;
 		border-radius: 5px;
 		background: @white;
-		padding: 30px;
+		padding: 30px 20px;
 		box-sizing: border-box;
 		background: @mainPattern;
 		overflow: hidden;
@@ -686,10 +920,35 @@ body.blog{
 			font-weight: bold;
 		}
 
-		.categories{
+		ul.categories{
 			padding: 0;
-			list-style-position: inside;
-			list-style: initial;	
+
+			li{
+				list-style-position: inside;
+				padding-left: 6px;
+				list-style-image: url("@{imgPath}/dot.png");
+				font-size: 14px;
+				margin-bottom: 5px;
+			}
+		}
+
+		ul.sponsors{
+			padding: 0;
+			li{
+				width: 110px;
+				height: 110px;
+				background: @white;
+				box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+				margin-right: 5px;
+				margin-bottom: 5px;
+				float: left;
+				overflow: hidden;
+
+				img{
+					height: 100%;
+					width: auto;
+				}
+			}
 		}
 	}
 	footer{
@@ -699,5 +958,433 @@ body.blog{
 			display: none;
 		}
 	}
+}
+body.single-post,
+body.category{
 
+	h1{
+		font-size: 35px;
+		padding-bottom: 5px;
+		border-bottom: dashed 1px @dashedBorder;
+	}
+	h2{
+		font-size: 25px;
+		background: @secondaryColor;
+		color: @white;
+		padding: 10px 15px;
+		font-size: 12px;
+		font-weight: bold;
+	}
+}
+
+body.single-perfil{
+	background: @bnProfile;
+	background-size: cover;
+
+	#perfil{
+		width: 100%;
+		margin: 50px auto;
+	}
+
+	.blog-body{
+		background: white;
+		padding: 50px 25px;
+
+		h1{
+			font-size: 50px;
+			margin: 0;
+			margin-bottom: 10px;
+			padding-bottom: 5px;
+			border-bottom: solid 1px @secondaryColor;
+		}
+		h2{
+			font-size: 18px;
+			margin: 0;
+			margin-bottom: 40px;
+		}
+		.img{
+			width: 280px;
+			height: 280px;
+			display: inline-block;
+			overflow: hidden;
+			margin-right: 30px;
+			vertical-align: top;
+			border: 13px solid #EEE;
+
+			.thumbnail{
+				width: 100%;
+				height: 280px;
+				display: inline-block;
+
+				img{
+					width: auto;
+					height: 100%;
+				}
+			}	
+		}
+
+		.resume{
+			display: inline-block;
+			width: 430px;
+			height: 400px;
+			overflow: auto;
+		}
+	}
+}
+
+.aboutus{
+	background: @white;
+	padding-top: 45px;
+
+	.content{
+		width: 47%;
+		padding-right: 20px;
+		box-sizing: border-box;
+
+		&.left{
+			float: left;
+		}
+		&.right{
+			float: right;
+		}
+
+		h3{
+			font-size: 30px;
+			margin-bottom: 0;
+		}
+		h2{
+			font-size: 36px;
+			font-weight: bold;
+		}
+		p{
+			font-size: 14px;
+		}
+	}
+
+	.about{
+		h1{
+			font-size: 48px;
+			margin-bottom: 50px;
+		}
+
+		
+	}
+
+	.history{
+		display: block;
+		float: left;
+		width: 100%;
+		background: @bnHistory;
+		background-size: 100%;
+		height: 500px;
+
+		.content{
+			margin-top: 100px;
+		}
+	}
+	.team{
+		display: block;
+		float: left;
+		width: 100%;
+		background: @bnTeam;
+		text-align: center;
+		padding-top: 80px;
+		height: auto;
+
+		h2{
+			font-size: 48px;
+			font-weight: bold;
+		}
+		h3{
+			font-size: 35px;
+			font-weight: bold;
+		}
+
+		ul.profiles{
+			display: block;
+			width: 100%;
+			color: white;
+
+		    .item{
+				width: 270px;
+				border-radius: 40px;
+				display: inline-block;
+				background: @ctaDarkProfile;
+				padding: 25px 10px 20px 10px;
+				box-sizing: border-box;
+				position: relative;
+				height: 280px;
+				margin-right: 80px!important;
+
+				&:nth-child(odd){
+					margin: 20px 10px 20px 10px;
+				}
+
+				h3{
+					font-size: 20px !important;
+					font-weight: bold;
+					text-align: center;
+					padding-bottom: 5px;
+					border-bottom: solid 1px @redLine;
+					margin-bottom: 0;
+				}
+				.img{
+					display: inline-block;
+					float: left;
+					background: @lightWhite;
+					width: 150px;
+					height: 150px;
+					border-radius: 50%;
+					position: absolute;
+					left: -55px;
+					top: 65px;
+					border: solid 4px @white;
+					box-shadow: 1px 3px 4px #333;
+					overflow: hidden;
+
+					a{
+						img{
+							height: 100%;
+							width: auto;
+						}
+					}
+				}
+				.content{
+					width: 190px;
+					display: inline-block;
+					font-size: 12px;
+					padding: 0 0 0 45px;
+					text-align: left;
+					float: right;
+
+					.link{
+						text-decoration: none;
+						color: white;
+						box-sizing: border-box;
+						background: @ctaDarkRed;
+						border-radius: 2px;
+						padding: 9.5px 23px;
+						font-weight: bold;
+						display: inline-block;
+						transition: all 0.7s ease;
+
+						&:hover{
+							background: lighten(@ctaDarkRed, 10%)
+						}
+					}
+				}
+		    }
+		}
+	}
+}
+
+section.contact{
+	background: @bnEye;
+	background-size: 100%;
+	background-position: center center;
+	height: 500px;
+	padding: 90px 0 30px 0;
+	
+	.wpcf7{
+		width: 100%;
+		max-width: 500px;
+		display: inline-block;
+		float: left;
+
+		input{
+			width: 100%;
+			display: block;
+			border: 0;
+			border-radius: 0;
+			background: rgba(255, 255, 255, 0.15);
+			font-weight: bold !important;
+			padding: 12px !important;
+			font-size: 10px !important;
+			margin-bottom: 0 !important;
+			color: white !important;
+		}
+		textarea{
+			width: 100.5%;
+			display: block;
+			border: 0;
+			border-radius: 0;
+			background: rgba(255, 255, 255, 0.15);
+			font-weight: bold;
+			padding: 7px 10px;
+			margin-bottom: 10px;
+			font-size: 10px !important;
+			height: 200px;
+			color: white !important;
+			max-height: 150px;
+		}
+		.send{
+			width: 100px;
+			padding: 10px;
+			background: red;
+			border-radius: 3px;
+			-webkit-appearance: none;
+		}
+		.btn{
+			max-width: 100px !important;
+		}
+		form{
+			margin-top: 0;
+		}
+	}
+	.content{
+		h2{
+			font-size: 34px;
+			line-height: 36px;
+			margin-bottom: 0;
+		}
+		h3{
+			font-size: 43px;
+			line-height: 43px;
+			font-weight: bold;
+		}
+		#SkypeButton_Call_ORTOS_1{
+			
+			#SkypeButton_Call_ORTOS_1_paraElement{
+				float: left;
+				margin: 0;
+			}
+			img{
+				margin: 0 !important;
+			}
+		}
+	}
+}
+
+body.admin-bar{
+	padding-top: 32px;
+}
+
+#events{
+	padding: 40px 0 40px 0;
+
+	h1{
+		font-size: 36px;
+		line-height: 43px;
+		font-weight: bold;
+		margin-bottom: 0;
+	}
+	h2{
+		font-size: 30px;
+		line-height: 36px;
+		font-weight: normal;
+		margin-bottom: 0;
+	}
+	.content{
+		p{
+			font-size: 16px;			
+		}
+
+		.lastEvents{
+			float: left;
+			width: 100%;
+			margin: 20px 0 40px 0;
+
+			article.item{
+				box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+				border: solid 8px @dashedBorder;
+				background: @white;
+				display: inline-block;
+				float: left;
+				width: 300px;
+				box-sizing: border-box;
+				overflow: hidden;
+				margin: 0 15px 0 0;
+				height: 320px;
+				position: relative;
+				opacity: 0.8;
+				transition: all 0.7s ease;
+
+				&:hover{
+					opacity: 1;
+				}
+
+				a{
+					float: left;
+					width: 100%;
+
+					figure{
+						float: left;
+						width: 100%;
+						height: 320px;
+						overflow: hidden;
+						margin: 0;
+
+						img{
+							height: 100%;
+							width: auto;
+						}
+					}
+					ul.content{
+						float: left;
+						width: 100%;
+						padding: 0;
+						margin: 0;
+						box-sizing: border-box;
+						padding: 20px;
+						position: absolute;
+						bottom: 0;
+						height: 170px;
+						background: fade(@white, 70%);
+
+						h3{
+							font-size: 16px;
+							line-height: 18px;
+							font-weight: bold;
+						}
+						li{
+							font-size: 14px;
+
+							strong{
+								color: @secondaryColor;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+body.single-evento{
+	#eventos{
+		background: @white;
+		padding: 0 0 40px 0;
+		.event-body{
+			.img{
+				width: 100%;
+				height: 400px;
+				overflow: hidden;
+				position: relative;
+				border-bottom: solid 7px @secondaryColor;
+
+				h1{
+					font-size: 30px;
+					line-height: 34px;
+					font-weight: bold;
+					position: absolute;
+					left: 50px;
+					bottom: 20px;
+					color: @white;
+					padding: 14px 40px 9px 20px;
+					margin: 0;
+					background: fade(@textColor, 50%);
+					max-width: 660px;
+				}
+			}
+			.event{
+				.content{
+					padding: 0;
+
+					p{
+						font-size: 16px;
+					}
+				}
+			}
+		}
+	}	
 }
