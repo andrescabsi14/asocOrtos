@@ -1,1 +1,1 @@
-”Å;U<?php exit; ?>a:1:{s:7:"content";s:10:"OptÃ³metra";}
+×Œ=U<?php exit; ?>a:1:{s:7:"content";s:10:"OptÃ³metra";}

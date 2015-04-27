@@ -1,1 +1,1 @@
-斉;U<?php exit; ?>a:1:{s:7:"content";s:114:"Especialista en Ort贸ptica y Terapia Visual FUAA. Magister en Administraci贸n de Empresas Universidad de La Salle.";}
+讓=U<?php exit; ?>a:1:{s:7:"content";s:114:"Especialista en Ort贸ptica y Terapia Visual FUAA. Magister en Administraci贸n de Empresas Universidad de La Salle.";}

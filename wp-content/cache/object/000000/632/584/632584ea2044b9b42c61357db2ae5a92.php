@@ -1,4 +1,4 @@
-e�;U<?php exit; ?>a:1:{s:7:"content";O:8:"stdClass":23:{s:2:"ID";s:2:"37";s:11:"post_author";s:1:"1";s:9:"post_date";s:19:"2015-01-20 08:00:39";s:13:"post_date_gmt";s:19:"2015-01-20 08:00:39";s:12:"post_content";s:4943:"Autor: Sandra Maritza Ruiz Moreno
+��=U<?php exit; ?>a:1:{s:7:"content";O:8:"stdClass":23:{s:2:"ID";s:2:"37";s:11:"post_author";s:1:"1";s:9:"post_date";s:19:"2015-01-20 08:00:39";s:13:"post_date_gmt";s:19:"2015-01-20 08:00:39";s:12:"post_content";s:4943:"Autor: Sandra Maritza Ruiz Moreno
 
 Optómetra – Especialista en Terapia visual y ortóptica
 La ortóptica, terapia visual o entrenamiento visual que como afirma Richman<!--more--> (1988) “No importa el término, siempre se refiere a la misma ciencia”, requiere de ciencias básicas y neurociencias, además de otras áreas y especialidades de la salud.

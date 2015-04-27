@@ -1,1 +1,1 @@
-ì≈;U<?php exit; ?>a:1:{s:7:"content";s:10:"Opt√≥metra";}
+÷å=U<?php exit; ?>a:1:{s:7:"content";s:10:"Opt√≥metra";}

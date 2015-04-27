@@ -1,1 +1,1 @@
-◊≈;U<?php exit; ?>a:1:{s:7:"content";s:140:"Somos una organizaci√≥n gremial dedicada al fortalecimiento cient√≠fico de los profesionales dedicados al entrenamiento y la terapia visual.";}
+uâ=U<?php exit; ?>a:1:{s:7:"content";s:140:"Somos una organizaci√≥n gremial dedicada al fortalecimiento cient√≠fico de los profesionales dedicados al entrenamiento y la terapia visual.";}
